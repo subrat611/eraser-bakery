@@ -10,6 +10,9 @@ import {
   Controls,
 } from "@xyflow/react";
 
+import Header from "./components/header";
+import Sidebar from "./components/sidebar";
+
 const initialNodes = [
   { id: "n1", position: { x: 0, y: 0 }, data: { label: "Node 1" } },
   { id: "n2", position: { x: 0, y: 100 }, data: { label: "Node 2" } },
@@ -36,27 +39,25 @@ function App() {
   );
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        width: "100%",
-        overflow: "hidden",
-      }}
-    >
-      <main style={{ width: "100%", height: "100%" }}>
-        <ReactFlow
-        // nodes={nodes}
-        // edges={edges}
-        // onNodesChange={onNodesChange}
-        // onEdgesChange={onEdgesChange}
-        // onConnect={onConnect}
-        // fitView
-        >
-          <Background />
+    <div className="h-screen w-full overflow-hidden flex">
+      <Sidebar />
+      <div className="h-full flex flex-col flex-1">
+        <Header />
+        <main className="flex-1 h-[calc(100vh-56px)]">
+          <ReactFlow
+          // nodes={nodes}
+          // edges={edges}
+          // onNodesChange={onNodesChange}
+          // onEdgesChange={onEdgesChange}
+          // onConnect={onConnect}
+          // fitView
+          >
+            <Background />
 
-          <Controls />
-        </ReactFlow>
-      </main>
+            <Controls />
+          </ReactFlow>
+        </main>
+      </div>
     </div>
   );
 }
